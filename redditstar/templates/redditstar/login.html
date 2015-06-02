@@ -1,0 +1,38 @@
+{% extends "redditstar/base.html" %}
+{% block title %}Reddit Star - Login{% endblock %}
+{% block header %}
+<div class="row">
+	<div class="page-header">
+		<h2>
+			Welcome To Reddit Star App!<br/>
+			<small>Please Enter Your Email To Contine</small>
+		</h2>
+	</div>
+	<h4></h4>
+</div>
+<div class="row">
+	<div class="col-md-4">
+		<form action="/login" method="POST">{% csrf_token %}
+			<div class="form-group">
+				<label for="id_email">{{form.email.label}}</label>
+				{{form.email}}
+			</div>
+			<button class="btn btn-primary" type="submit">Login</button>
+		</form>
+	</div>
+	<!--
+	<div class="col-md-3">
+		<h4>Welcome <b>{{testing}}</b></h4>
+	</div>
+	<div class="col-md-2">
+		<h4>Home</h4>
+	</div>
+	<div class="col-md-2">
+		<h4>Favorites</h4>
+	</div>
+	<div class="col-md-2">
+		<h4>Log Out</h4>
+	</div>
+	-->
+</div>
+{% endblock %}

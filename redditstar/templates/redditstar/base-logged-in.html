@@ -1,0 +1,32 @@
+{% extends "redditstar/base.html" %}
+{% block header %}
+<div class="row">
+	<div class="col-md-4">
+		<h4><b>{{ request.session.email }}</b></h4>
+	</div>
+	<div class="col-md-1">
+		{% if role == 'top' %}
+		<h4>Top</h4>
+		{% else %}
+		<a href="/"><h4>Top</h4></a>
+		{% endif %}
+	</div>
+	<div class="col-md-1">
+		{% if role == 'hot' %}
+		<h4>Hot</h4>
+		{% else %}
+		<a href="/hot"><h4>Hot</h4></a>
+		{% endif %}
+	</div>
+	<div class="col-md-2">
+		{% if role == 'favorites' %}
+		<h4>Favorites</h4>
+		{% else %}
+		<a href="/favorites"><h4>Favorites</h4></a>
+		{% endif %}
+	</div>
+	<div class="col-md-2">
+		<a href="/logout"><h4>Logout</h4></a>
+	</div>
+</div>
+{% endblock %}
