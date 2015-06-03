@@ -1,0 +1,14 @@
+.listing-item{
+    margin:15px; 
+    border-bottom:1px solid; 
+    padding: 
+    15px;
+}
+
+.listing-media{
+    margin-top:15px;
+}
+
+.listing-item button{
+    float:right;   
+}

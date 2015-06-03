@@ -1,27 +1,29 @@
 {% extends "redditstar/base-logged-in.html" %}
+{% load html_utils %}
 {% block body %}
-	{% for item in data %}
-	<div class="row" style="margin-top:20px; border">
-		<div class="col-md-9">
-			<div>
-				<a href="{{ reddit_base_url }}{{ item.data.permalink }}">
-					{{ item.data.title }}
-				</a>
-			</div>
-			<div>Original Listing: <a href="{{ item.data.url }}">{{ item.data.url }}</a></div>
-			<div>Number of comments: {{ item.data.num_comments }}</div>
-		</div>
-		<div class="col-md-3">
-			{% if item.data.name in favorites_names_set %}
-			<button class="btn btn-danger btn-unfavorite" data-item-name="{{ item.data.name }}">
-				Remove
-			</button>
-			{% else %}
-			<button class="btn btn-primary btn-favorite" data-item-name="{{ item.data.name }}">
-				Bookmark
-			</button>
-			{% endif %}
-		</div>
-	</div>
-	{% endfor %}
+    {% for item in data %}
+    <div class="row listing-item">
+        <div class="col-md-9">
+            <div>
+                <a href="{{ reddit_base_url }}{{ item.data.permalink }}">
+                    {{ item.data.title }}
+                </a>
+            </div>
+            <div>Original Listing: <a href="{{ item.data.url }}">{{ item.data.url }}</a></div>
+            <div>Number of comments: {{ item.data.num_comments }}</div>
+            <div class="listing-media">{{ item.data.media_embed.content|decode_html|safe }}</div>
+        </div>
+        <div class="col-md-3">
+            {% if item.data.name in favorites_names_set %}
+            <button class="btn btn-danger btn-unfavorite" data-item-name="{{ item.data.name }}">
+                Remove
+            </button>
+            {% else %}
+            <button class="btn btn-primary btn-favorite" data-item-name="{{ item.data.name }}">
+                Bookmark
+            </button>
+            {% endif %}
+        </div>
+    </div>
+    {% endfor %}
 {% endblock %}
